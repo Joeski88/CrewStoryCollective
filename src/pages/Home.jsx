@@ -21,7 +21,7 @@ export default function Home() {
           <Link
             key={name}
             to={path}
-            className="group relative p-8 bg-slate-100 hover:bg-slate-200 rounded-2xl shadow-lg transition duration-300 hover:scale-105 hover:shadow-2xl text-center"
+            className="group relative p-8 bg-olive-500 hover:bg-olive-100 rounded-2xl shadow-lg transition duration-300 hover:scale-105 hover:shadow-2xl text-center"
           >
             <span className="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition">
               {name}

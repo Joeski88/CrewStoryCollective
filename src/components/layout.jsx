@@ -2,7 +2,20 @@ import { Outlet, Link } from 'react-router-dom';
 
 export default function Layout() {
   return (
-    <div className="flex flex-col min-h-screen bg-cream-100 text-midnight-500">
+    <div className="relative flex flex-col min-h-screen w-screen">
+
+      {/* --- full-bleed SVG underlay --- */}
+              <div
+          className="
+                  fixed inset-0 -z-10
+                  bg-[linear-gradient(90deg,_theme(colors.olive.400),_
+                                        theme(colors.sage.500),_
+                                        theme(colors.cream.800),_
+                                        theme(colors.terracotta.300))]
+                  bg-[length:200%_200%]
+                  animate-gradient-shift
+                "/>
+
       {/* Header */}
       <header className="bg-olive-500 text-cream-100 shadow-md">
         <div className="max-w-6xl mx-auto flex items-center justify-between p-4">
@@ -11,7 +24,7 @@ export default function Layout() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-6xl mx-auto w-full p-6 bg-sage-500 text-terracotta-800">
+      <main className="flex-1 w-full p-0 bg-transparent text-terracotta-800">
         <Outlet />
       </main>
 

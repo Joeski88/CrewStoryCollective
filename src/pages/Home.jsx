@@ -11,7 +11,7 @@ const pages = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-image-pattern bg-cover bg-center flex flex-col items-center justify-center p-6">
+        <div className="min-h-screen flex flex-col justify-center items-center bg-[url('/assets/bg-image.svg')] bg-cover bg-center px-4">
       
       {/* Hero */}
       <section className="text-center py-20 bg-midnight-100 rounded-2xl mb-12 w-full max-w-3xl">

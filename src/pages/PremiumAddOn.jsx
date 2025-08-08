@@ -1,10 +1,10 @@
+// src/pages/About.jsx
 export default function PremiumAddOn() {
   return (
-    <div className="min-h-screen p-8 bg-white text-black">
-      <h1 className="text-4xl font-bold text-center mb-4">Premium Add On's</h1>
-      <p className="text-lg text-center">
-        This is the About page. Replace this text with your content.
-      </p>
+    <div className="space-y-6">
+      <h2 className="text-3xl font-heading text-midnight-700">Premium Add On's</h2>
+      <p>We’re a London-based creative production company…</p>
+      {/* Add images, cards, team bios, etc. */}
     </div>
   );
 }

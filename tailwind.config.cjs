@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+       backgroundImage: {
+        'hero-pattern': "url('/public/assets/bg-image.svg')",
+      },
        colors: {
           sage: {
             100: '#E6E4D8',

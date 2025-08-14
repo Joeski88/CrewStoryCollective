@@ -2,12 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-stroke-white {
+    -webkit-text-stroke: 0.5px #fff; /* ultra thin */
+  }
+
+  /* Minimal fallback outline for Firefox */
+  .text-outline-fallback {
+    text-shadow:
+      0.5px 0.5px 0 #fff,
+      -0.5px 0.5px 0 #fff,
+      0.5px -0.5px 0 #fff,
+      -0.5px -0.5px 0 #fff;
+  }
+}
+
+
 @layer base {
-  html, body, #root {
+
+  html,
+  body,
+  #root {
     margin: 0;
     padding: 0;
     width: 100vw;
     min-height: 100vh;
-    overflow-x: hidden;   /* no horizontal white gutters */
+    overflow-x: hidden;
+    /* no horizontal white gutters */
   }
 }

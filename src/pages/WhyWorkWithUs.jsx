@@ -1,28 +1,40 @@
 import { useEffect } from "react";
-import RevealCard from "../components/RevealCard";
-import { useBackground } from "../components/BackgroundContent";
-
-const items = [
-  { title: "Senior Craft", desc: "Decades of production experience across documentary, branded, and live." },
-  { title: "Strategy-First", desc: "We align story, channel, and audience before we roll camera." },
-  { title: "Transparent Process", desc: "Clear milestones, budgets, and communication at every stage." },
-  { title: "Measurable Impact", desc: "Creative that maps to KPIs: engagement, conversions, and brand lift." },
-];
+import HomeButton from "../components/HomeButton";
 
 export default function WhyWorkWithUs() {
-  const { setActiveBg } = useBackground();
-  useEffect(() => { setActiveBg("/assets/bg-withus.svg"); }, [setActiveBg]);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top on load
+  }, []);
+
+  const points = [
+    "Collaborative approach tailored to your story.",
+    "Experienced crew across multiple industries.",
+    "Commitment to high-end, cinematic quality.",
+    "Transparent pricing and scalable packages."
+  ];
 
   return (
     <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-16">
+      {/* Home button */}
+      <HomeButton />
+
+      {/* Section heading */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-heading text-white bg-olive-500 px-6 py-3 rounded-2xl mb-8">
-          Why Work With Us</h1>
-        <p className="text-2xl text-cream-100/90">What Makes Us Different</p>
+        <h1 className="inline-block text-4xl sm:text-5xl font-heading text-cream-100 bg-olive-500/80 px-6 py-2 rounded-2xl mb-6">
+          Why Work With Us
+        </h1>
+        <p className="text-2xl text-cream-100/90">Our Values</p>
       </div>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map(({ title, desc }) => (
-          <RevealCard key={title} title={title}><p>{desc}</p></RevealCard>
+
+      {/* List of points styled like pills */}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2 max-w-4xl w-full px-4">
+        {points.map((point, i) => (
+          <div
+            key={i}
+            className="bg-olive-800/80 text-cream-100 text-lg p-6 rounded-2xl text-center shadow-md"
+          >
+            {point}
+          </div>
         ))}
       </div>
     </div>

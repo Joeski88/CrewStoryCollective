@@ -1,6 +1,6 @@
-import RevealCard from "../components/RevealCard";
-import { useBackground } from "../components/BackgroundContent";
 import { useEffect } from "react";
+import RevealCard from "../components/RevealCard";
+import HomeButton from "../components/HomeButton"; // optional but consistent with other pages
 
 const items = [
   {
@@ -25,25 +25,27 @@ const items = [
   },
 ];
 
-export default function WhatWeOffer() {
-  // Optional: set a route-specific background when landing directly
-  const { setActiveBg } = useBackground();
+const WhatWeOffer = () => {
   useEffect(() => {
-    setActiveBg("/assets/bg-offer.svg"); // choose per page
-  }, [setActiveBg]);
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-16">
+
+      {/* Optional: Home button */}
+      <HomeButton />
+
       {/* Section heading */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-heading text-white bg-olive-500 px-6 py-3 rounded-2xl mb-8">
-          Service Formats
+        <h1 className="text-4xl sm:text-5xl font-heading text-cream-100 bg-olive-500/80 px-6 py-3 rounded-2xl mb-4">
+          What We Offer
         </h1>
         <p className="text-2xl text-cream-100/90">Explore Our Offerings</p>
       </div>
 
-      {/* Responsive 4-up grid */}
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Responsive Grid */}
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 justify-items-center w-full max-w-6xl">
         {items.map(({ title, desc }) => (
           <RevealCard key={title} title={title}>
             <p>{desc}</p>
@@ -52,4 +54,6 @@ export default function WhatWeOffer() {
       </div>
     </div>
   );
-}
+};
+
+export default WhatWeOffer;

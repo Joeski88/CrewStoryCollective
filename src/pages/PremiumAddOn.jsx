@@ -1,31 +1,34 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import RevealCard from "../components/RevealCard";
-
-// ⬅ NEW: Import the HomeButton
 import HomeButton from "../components/HomeButton";
 
-// ✅ IMPORTANT: make sure path matches your actual file name/location
-import { useBackground } from "../components/BackgroundContent"; 
-
 const items = [
-  { title: "Cinematics Package", desc: "Advanced camera moves, prime glass, lighting design, and color pipeline for a filmic look." },
-  { title: "Original Score & Sound", desc: "Custom composition, foley, and immersive spatial mixing to elevate the narrative." },
-  { title: "Motion & Titles", desc: "Animated brand elements, kinetic typography, and bespoke lower-thirds." },
-  { title: "Talent & Casting", desc: "Casting, contracts, and direction to find the right voice and face for your story." },
+  {
+    title: "Cinematics Package",
+    desc: "Advanced camera moves, prime glass, lighting design, and color pipeline for a filmic look.",
+  },
+  {
+    title: "Original Score & Sound",
+    desc: "Custom composition, foley, and immersive spatial mixing to elevate the narrative.",
+  },
+  {
+    title: "Motion & Titles",
+    desc: "Animated brand elements, kinetic typography, and bespoke lower-thirds.",
+  },
+  {
+    title: "Talent & Casting",
+    desc: "Casting, contracts, and direction to find the right voice and face for your story.",
+  },
 ];
 
-export default function PremiumAddOn() {
-  const { setActiveBg } = useBackground();
-
+const PremiumAddOns = () => {
   useEffect(() => {
-    setActiveBg("/assets/bg-addons.svg");
-  }, [setActiveBg]);
+    window.scrollTo(0, 0); // Optional scroll reset
+  }, []);
 
   return (
-    // ⬅ WRAP the whole page in a relative container so z-index works properly
     <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-16">
-
-      {/* ⬅ NEW: Home button at top-left */}
+      {/* Home button */}
       <HomeButton />
 
       {/* Page Title Section */}
@@ -46,4 +49,6 @@ export default function PremiumAddOn() {
       </div>
     </div>
   );
-}
+};
+
+export default PremiumAddOns;

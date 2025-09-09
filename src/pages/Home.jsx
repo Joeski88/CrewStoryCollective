@@ -1,35 +1,27 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useBackground } from "../components/BackgroundContent";
 
 const pages = [
-  { name: "What We Offer", path: "/what-we-offer", bg: "/assets/bg-offer.svg" },
-  { name: "Premium Add-Ons", path: "/premium-add-ons", bg: "/assets/bg-addons.svg" },
-  { name: "Sample Deliverables", path: "/sample-deliverables", bg: "/assets/bg-deliverables.svg" },
-  { name: "Why Work With Us", path: "/why-work-with-us", bg: "/assets/bg-withus.svg" },
-  { name: "About", path: "/about", bg: "/assets/bg-about.svg" },
-  { name: "Contact", path: "/contact", bg: "/assets/bg-contact.svg" },
+  { name: "What We Offer", path: "/what-we-offer" },
+  { name: "Premium Add-Ons", path: "/premium-add-ons" },
+  { name: "Sample Deliverables", path: "/sample-deliverables" },
+  { name: "Why Work With Us", path: "/why-work-with-us" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
 ];
 
 export default function Home() {
-  const { setActiveBg, defaultBg } = useBackground();
-
-  // Intro splash state
   const [showIntro, setShowIntro] = useState(true);
   const [introVisible, setIntroVisible] = useState(false);
-
-  // Controls fade-in of homepage content after splash
   const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
-    setIntroVisible(true); // fade splash in
-
-    const hold = setTimeout(() => setIntroVisible(false), 1800); // start fade out
+    setIntroVisible(true);
+    const hold = setTimeout(() => setIntroVisible(false), 1800);
     const done = setTimeout(() => {
-      setShowIntro(false);      // unmount splash
-      setContentVisible(true);  // fade content in
+      setShowIntro(false);
+      setContentVisible(true);
     }, 2500);
-
     return () => {
       clearTimeout(hold);
       clearTimeout(done);
@@ -44,11 +36,6 @@ export default function Home() {
           className={`fixed inset-0 z-50 flex items-center justify-center 
                       bg-olive-500 transition-opacity duration-700
                       ${introVisible ? "opacity-100" : "opacity-0"}`}
-          style={{
-            backgroundImage: "url('/assets/bg-withus.svg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center"
-          }}
         >
           <h1
             className="
@@ -115,18 +102,13 @@ export default function Home() {
           contentVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        {pages.map(({ name, path, bg }) => (
+        {pages.map(({ name, path }) => (
           <Link
             key={name}
             to={path}
-            onMouseEnter={() => setActiveBg(bg)}
-            onMouseLeave={() => setActiveBg(defaultBg)}
-            onClick={() => setActiveBg(bg)}
             className="w-full p-8 bg-olive-500/80 hover:bg-olive-500 rounded-2xl shadow-md transition-transform transform hover:scale-105"
           >
-            <span className="block text-xl font-semibold text-cream-100">
-              {name}
-            </span>
+            <span className="block text-xl font-semibold text-cream-100">{name}</span>
           </Link>
         ))}
       </section>

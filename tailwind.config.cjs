@@ -23,9 +23,7 @@ module.exports = {
       backgroundSize: {
         '200%': '200% 200%',
       },
-      backgroundImage: {
-        'hero-pattern': "url('/public/assets/bg-image.svg')",
-      },
+      
       colors: {
         sage: {
           100: '#E6E4D8',
@@ -40,7 +38,7 @@ module.exports = {
         terracotta: {
           100: '#FBEDE9',
           500: '#E2725B',
-          800: '#C2543C',
+          800: '#F7591F',
         },
         midnight: {
           100: '#2E2F36',
@@ -55,8 +53,7 @@ module.exports = {
       },
 
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        heading: ['"Playfair Display"', 'serif'],
+        sans: ['Montserrat', 'sans-serif'],
       },
       spacing: {
         '128': '32rem',

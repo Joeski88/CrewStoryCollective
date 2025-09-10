@@ -1,12 +1,4 @@
 import React, { useEffect } from "react";
-import RevealCard from "../components/RevealCard";
-
-const items = [
-  { title: "Our Ethos", desc: "Human stories, crafted with care. We design for resonance over noise." },
-  { title: "Our Crew", desc: "Directors, producers, and technologists who’ve shipped at every scale." },
-  { title: "Our Network", desc: "Trusted partners for VFX, sound, grade, and post finishing." },
-  { title: "Sustainability", desc: "Lean crews, responsible travel, and low-impact materials." },
-];
 
 const About = () => {
   useEffect(() => {
@@ -17,16 +9,23 @@ const About = () => {
     <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-16">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-heading text-white bg-olive-500 px-6 py-3 rounded-2xl mb-8">
-          About
+          Why This Matters To You
         </h1>
-        <p className="text-2xl text-cream-100/90">Who We Are</p>
       </div>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {items.map(({ title, desc }) => (
-          <RevealCard key={title} title={title}>
-            <p>{desc}</p>
-          </RevealCard>
-        ))}
+      {/* Single Pill */}
+      <div className="w-full max-w-2xl bg-cream-800/90 rounded-2xl shadow-2xl p-8 text-white text-left">
+        <p className="mb-6">
+          <strong>Together</strong>we unite atmosphere, design mixed with first class & authentic hospitality, with audiences through an immersive experience.
+        </p>
+        <p className="mb-6">
+          We Bring the Back of House to<strong>LIFE!</strong>
+        </p>
+        <p className="mb-6">
+          <strong>Your</strong>voices first, your story told with passion, creativity, and authenticity.
+        </p>
+        <p>
+          <strong>Sustainability:</strong> Lean crews, responsible travel, and low-impact materials.
+        </p>
       </div>
     </div>
   );

@@ -18,23 +18,21 @@ const SampleDeliverables = () => {
       <HomeButton />
 
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-heading text-cream-100 bg-terracotta-500/80 px-6 py-3 rounded-2xl mb-4">
-          Sample Deliverables
+        <h1 className="text-4xl sm:text-5xl font-heading text-terracotta-500 px-6 py-3 rounded-2xl mb-4">
+          Did You Know?
         </h1>
       </div>
 
-      {/* Single Pill */}
-      <div className="w-full max-w-2xl bg-cream-800/90 rounded-2xl shadow-2xl p-8 text-black text-left">
-        <div className="space-y-8">
-          {deliverables.map(({ number, text }, idx) => (
-            <div key={idx} className="flex items-start">
-              <span className="text-6xl sm:text-7xl font-black text-terracotta-500 mr-8 min-w-[90px] flex-shrink-0 text-center">
-                {number}
-              </span>
-              <span className="text-lg break-normal">{text}</span>
-            </div>
-          ))}
-        </div>
+      {/* Content logic */}
+      <div className="w-full max-w-2xl text-black text-left space-y-16 sm:space-y-24 lg:space-y-32">
+        {deliverables.map(({ number, text }, idx) => (
+          <div key={idx} className="flex items-start">
+            <span className="text-6xl sm:text-7xl font-black text-terracotta-500 mr-8 min-w-[90px] flex-shrink-0 text-center">
+              {number}
+            </span>
+            <span className="text-lg break-normal">{text}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

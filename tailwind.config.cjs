@@ -36,7 +36,7 @@ module.exports = {
           800: '#4C5A27',
         },
         terracotta: {
-          100: '#FBEDE9',
+          100: '#ebc5b1',
           500: '#E2725B',
           800: '#F7591F',
         },

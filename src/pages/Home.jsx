@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const pages = [
     { name: "Ethos", path: "/cascade#what-we-offer" },
@@ -14,35 +14,61 @@ export default function Home() {
     const [showIntro, setShowIntro] = useState(true);
     const [introVisible, setIntroVisible] = useState(false);
     const [contentVisible, setContentVisible] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+    const [blurOut, setBlurOut] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const skipIntro = location.state?.skipIntro;
 
     useEffect(() => {
+        if (skipIntro) {
+            setShowIntro(false);
+            setContentVisible(true);
+            return;
+        }
         setIntroVisible(true);
-        const hold = setTimeout(() => setIntroVisible(false), 1800);
+        const hold = setTimeout(() => setIntroVisible(false), 3500);
         const done = setTimeout(() => {
             setShowIntro(false);
             setContentVisible(true);
-        }, 2500);
+        }, 4000);
         return () => {
             clearTimeout(hold);
             clearTimeout(done);
         };
-    }, []);
+    }, [skipIntro]);
+
+    // Handler for menu link click
+    const handleMenuLink = (path) => {
+        setBlurOut(true);
+        setTimeout(() => {
+            setShowMenu(false);
+            setBlurOut(false);
+            navigate(path);
+        }, 700); // 350ms matches the transition
+    };
 
     return (
         <div className="min-h-screen bg-[url('/assets/flamebgimage.mp4')] bg-cover bg-center relative">
             {/* Splash Intro Overlay */}
             {showIntro && (
                 <div
-                    className={`fixed inset-0 z-50 flex items-center justify-center
-                        bg-black/60 transition-opacity duration-700
-                        ${introVisible ? "opacity-100" : "opacity-0"}`}
+                    className={`fixed inset-0 z-50 flex flex-col items-center justify-center
+            bg-black/60 transition-opacity duration-700
+            ${introVisible ? "opacity-100" : "opacity-0"}`}
                 >
-                    <h1 className="text-white text-6xl font-black text-center">
-                        CREW STORY COLLECTIVE
-                    </h1>
+                    <div className="flex flex-col items-center">
+                        <h1 className="text-white text-6xl font-black text-center mb-6">
+                            ARE YOU READY TO
+                        </h1>
+                        <div className="flex flex-row justify-evenly items-center w-full max-w-2xl gap-4">
+                            <p className="text-terracotta-500 text-2xl font-extrabold tracking-wide">RECONNECT</p>
+                            <p className="text-terracotta-500 text-2xl font-extrabold tracking-wide">REGENERATE</p>
+                            <p className="text-terracotta-500 text-2xl font-extrabold tracking-wide">REDISCOVER</p>
+                        </div>
+                    </div>
                 </div>
             )}
-
             {/* Main Content */}
             <main className={`relative z-10 transition-opacity duration-700 ${contentVisible ? "opacity-100" : "opacity-0"}`}>
                 {/* Foreground content */}
@@ -76,19 +102,42 @@ export default function Home() {
                     </div>
                 </section>
 
+                {/* Menu Button */}
+                <div className="flex justify-center mb-12">
+                    <button
+                        onClick={() => setShowMenu(true)}
+                        className="text-terracotta-500 font-bold py-4 px-12 rounded-2xl text-2xl shadow-lg transition"
+                    >
+                        Menu
+                    </button>
+                </div>
 
-                {/* Grid of links */}
-                <section className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-5xl mx-auto justify-items-stretch relative z-10">
-                    {pages.map(({ name, path }) => (
-                        <Link
-                            key={name}
-                            to={path}
-                            className="w-full p-8 bg-terracotta/30 hover:bg-terracotta/10 rounded-2xl shadow-md transition-transform transform hover:scale-105"
-                        >
-                            <span className="block text-xl text-center font-semibold text-terracotta-800">{name}</span>
-                        </Link>
-                    ))}
-                </section>
+                {/* Menu Overlay */}
+                {showMenu && (
+                    <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm transition-all duration-700 ${blurOut ? "blur-sm opacity-60" : "blur-0 opacity-100"}`}>
+                        <div className="bg-white/80 rounded-2xl shadow-2xl p-10 max-w-md w-full relative flex flex-col items-center transition-all duration-300">
+                            <button
+                                onClick={() => setShowMenu(false)}
+                                className="absolute top-4 right-4 text-3xl text-terracotta-500 hover:text-terracotta-700 font-bold"
+                                aria-label="Close menu"
+                            >
+                                &times;
+                            </button>
+                            <h2 className="text-3xl font-extrabold text-terracotta-700 mb-8">Menu</h2>
+                            <nav className="flex flex-col gap-6 w-full">
+                                {pages.map(({ name, path }) => (
+                                    <button
+                                        key={name}
+                                        className="block text-xl text-center font-semibold text-terracotta-800 hover:text-terracotta-500 transition bg-transparent"
+                                        onClick={() => handleMenuLink(path)}
+                                    >
+                                        {name}
+                                    </button>
+                                ))}
+                            </nav>
+                        </div>
+                    </div>
+                )}
             </main>
         </div>
     );

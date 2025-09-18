@@ -12,19 +12,22 @@ const WhatWeOffer = () => {
       <HomeButton />
 
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-heading text-cream-100 bg-terracotta-500 px-6 py-3 rounded-2xl mb-4">
+        <h1 className="text-4xl sm:text-5xl font-heading text-terracotta-500 px-6 py-3 rounded-2xl mb-4">
           Ethos
         </h1>
       </div>
 
-      {/* Single Pill with one paragraph */}
-      <div className="w-full max-w-2xl bg-cream-800/90 rounded-2xl shadow-2xl p-8 text-black text-left">
-        <p className="mb-6">Crew Story Collective is a story driven creative studio working at the intersection of hospitality storytelling, presence, and place.</p>
-
-         <p className="mb-6">We believe that truly immersive spaces must nourish not only our planet but also our deepest human needs for Reconnection, Regeneration & Rediscovery.</p>
-
-          <p className="mb-6">Our mission? To create Hospitality UGC experiences that awaken the senses, foster authentic connection, and remind us what it means to be fully alive in this moment.</p>
-        
+      {/* Content */}
+      <div className="w-full max-w-4xl mx-auto">
+        <p className="mb-10 text-black text-left text-2xl leading-loose">
+          Crew Story Collective is a story driven creative studio working at the intersection of hospitality storytelling, presence, and place.
+        </p>
+        <p className="mb-10 text-black text-left text-2xl leading-loose">
+          We believe that truly immersive spaces must nourish not only our planet but also our deepest human needs for Reconnection, Regeneration & Rediscovery.
+        </p>
+        <p className="mb-10 text-black text-left text-2xl leading-loose">
+          Our mission? To create Hospitality UGC experiences that awaken the senses, foster authentic connection, and remind us what it means to be fully alive in this moment.
+        </p>
       </div>
     </div>
   );
